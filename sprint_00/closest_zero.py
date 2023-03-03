@@ -1,26 +1,26 @@
-# ID = 83168214
+# ID = 83283704
 
 import sys
 
 
 def get_input():
-    n = int(sys.stdin.readline().strip())
+    street_length = int(sys.stdin.readline().strip())
     street = [int(x) for x in sys.stdin.readline().strip().split()]
-    return n, street
+    return street_length, street
 
 
-def find_closest_zero(n: int, street: list) -> str:
+def find_closest_zero(street_length: int, street: list) -> str:
     if len(street) == 1:
         return '0'
 
-    closest_zeroes = [0 for x in range(n)]
+    closest_zeroes = [0 for x in range(street_length)]
 
     closest_zeroes[0] = 9**10
 
     if street[0] == 0:
         closest_zeroes[0] = 0
 
-    for i in range(1, n):
+    for i in range(1, street_length):
         if street[i] == 0:
             closest_zeroes[i] = 0
         else:
@@ -29,7 +29,7 @@ def find_closest_zero(n: int, street: list) -> str:
     if street[i - 1] == 0:
         closest_zeroes[i - 1] = 0
 
-    for i in range(n - 2, -1, -1):
+    for i in range(street_length - 2, -1, -1):
         if street[i] == 0:
             closest_zeroes[i] = 0
         else:
@@ -37,11 +37,11 @@ def find_closest_zero(n: int, street: list) -> str:
                 closest_zeroes[i], closest_zeroes[i + 1] + 1
             )
 
-    return ' '.join(str(x) for x in closest_zeroes)
+    return closest_zeroes
 
 
 def main():
-    sys.stdout.write(find_closest_zero(*get_input()))
+    print(*find_closest_zero(*get_input()))
 
 
 if __name__ == '__main__':
