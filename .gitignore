@@ -2,3 +2,6 @@
 *.zip
 *.7z
 *.rar
+
+# *.txt inputs
+*.txt
