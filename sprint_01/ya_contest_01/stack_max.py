@@ -1,3 +1,5 @@
+
+
 class StackMax:
     def __init__(self) -> None:
         self.items = []
@@ -7,7 +9,7 @@ class StackMax:
 
     def pop(self):
         if self.items != []:
-            return self.items.pop()
+            self.items.pop()                   
         else:
             print('error')
 
