@@ -3,12 +3,13 @@ class StackMax:
         self.items = []
 
     def push(self, item):
-        print(f'push {item}')
         self.items.append(item)
 
     def pop(self):
-        print('pop')
-        return self.items.pop()
+        if self.items != []:
+            return self.items.pop()
+        else:
+            print('error')
 
     def get_max(self):
         if self.items == []:
@@ -17,11 +18,15 @@ class StackMax:
 
 
 def get_input():
-    command_count = input()
+    command_count = int(input())
     commands = []
-    for i in range(len(command_count)):
-        commands.append(input().strip())
 
+    for i in range(command_count):
+        command = input().strip()
+        if 'push' in command:
+            commands.append(command.split())
+        else:
+            commands.append(command)
     return commands
 
 
@@ -31,7 +36,12 @@ def main():
     stack = StackMax()
 
     for command in commands:
-        print(str(getattr(stack, command)))
+        if 'push' in command:
+            stack.push(item=int(command[1]))
+        elif command == 'get_max':
+            print(stack.get_max())
+        else:
+            stack.pop()
 
 
 if __name__ == '__main__':
