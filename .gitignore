@@ -1,7 +1,10 @@
 # archives
-*.zip
-*.7z
-*.rar
+.zip
+.7z
+.rar
 
 # *.txt inputs
-*.txt
+.txt
+
+# excel for testing
+.xlsx
