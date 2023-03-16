@@ -1,4 +1,4 @@
-# ID = 84023350
+# ID = 84060944
 
 
 import operator
@@ -12,9 +12,11 @@ OPERATORS = {
 }
 
 
-def main():
-    line = input().strip().split()
+def get_input():
+    return input().strip().split()
 
+
+def main(line: list):
     stack = []
 
     for elem in line:
@@ -29,4 +31,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    main(line=get_input())
