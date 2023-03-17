@@ -27,8 +27,8 @@ def main(line: list):
             value_2 = stack.pop()
             stack.append(OPERATORS[elem](value_2, value_1))
 
-    print(stack.pop())
+    return stack.pop()
 
 
 if __name__ == '__main__':
-    main(line=get_input())
+    print(main(line=get_input()))
