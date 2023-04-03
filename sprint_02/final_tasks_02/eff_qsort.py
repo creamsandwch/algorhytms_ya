@@ -1,8 +1,6 @@
-# 85060471
-
+# 85060650
 
 from dataclasses import dataclass
-from random import randint
 
 
 @dataclass
@@ -31,7 +29,7 @@ def qsort_in_place(array, left, right):
 
     i, j = left, right
 
-    pivot = array[randint(left, right)]
+    pivot = array[(left + right) // 2]
 
     while i <= j:
         while array[i] < pivot:
