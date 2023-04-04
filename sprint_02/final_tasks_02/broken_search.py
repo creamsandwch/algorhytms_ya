@@ -1,7 +1,7 @@
 # 84888806
 
 
-def binary_search(array, target, left, right):
+def binary_search(array: list, target: int, left: int, right: int) -> int:
     if left >= right:
         return -1
 
@@ -16,7 +16,7 @@ def binary_search(array, target, left, right):
             return binary_search(array, target, mid + 1, right)
 
 
-def start_finder(array):
+def start_finder(array: list) -> int:
     left = 0
     right = len(array) - 1
     while left <= right:
@@ -30,7 +30,7 @@ def start_finder(array):
     return mid
 
 
-def broken_search(nums, target):
+def broken_search(nums: list, target: int) -> int:
     mid = start_finder(nums)
     left = 0
     right = len(nums) - 1

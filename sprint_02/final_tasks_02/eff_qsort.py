@@ -1,5 +1,6 @@
-# 85060650
+# 85128893
 
+from typing import Tuple
 from dataclasses import dataclass
 
 
@@ -9,44 +10,37 @@ class Student:
     score: int
     penalties: int
 
-    def __gt__(self, other):
-        if self.score == other.score:
-            if self.penalties == other.penalties:
-                return self.name > other.name
-            return self.penalties > other.penalties
-        return self.score < other.score
-
-    def __lt__(self, other):
-        return other > self
+    def params(self):
+        return (-self.score, self.penalties, self.name)
 
     def __str__(self):
         return self.name
 
 
-def qsort_in_place(array, left, right):
-    if left >= right:
+def qsort_in_place(array: list, init_left: int, init_right: int) -> None:
+    if init_left >= init_right:
         return
 
-    i, j = left, right
+    left, right = init_left, init_right
 
-    pivot = array[(left + right) // 2]
+    pivot = array[(init_left + init_right) // 2]
 
-    while i <= j:
-        while array[i] < pivot:
-            i += 1
-        while array[j] > pivot:
-            j -= 1
+    while left <= right:
+        while array[left].params() > pivot.params():
+            left += 1
+        while array[right].params() < pivot.params():
+            right -= 1
 
-        if i <= j:
-            array[i], array[j] = array[j], array[i]
-            i += 1
-            j -= 1
+        if left <= right:
+            array[left], array[right] = array[right], array[left]
+            left += 1
+            right -= 1
 
-    qsort_in_place(array, left, j)
-    qsort_in_place(array, i, right)
+    qsort_in_place(array, init_left, right)
+    qsort_in_place(array, left, init_right)
 
 
-def get_input():
+def get_input() -> Tuple[int, list]:
     length = int(input().strip())
     contestants = []
     for i in range(length):
@@ -56,12 +50,12 @@ def get_input():
     return length, contestants
 
 
-def main():
+def main() -> None:
     length, array = get_input()
 
     qsort_in_place(array, 0, length - 1)
 
-    for elem in array:
+    for elem in array[::-1]:
         print(elem)
 
 
