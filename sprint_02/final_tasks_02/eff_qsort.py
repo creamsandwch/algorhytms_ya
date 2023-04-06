@@ -32,6 +32,7 @@ def qsort_in_place(array: list, init_left: int, init_right: int) -> None:
             right -= 1
 
         if left <= right:
+            print(f'SWAP: {array[left].params(), array[right].params()}')
             array[left], array[right] = array[right], array[left]
             left += 1
             right -= 1
